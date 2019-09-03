@@ -14,6 +14,7 @@
     </modules>
     <artifactId>mooc-ad-server</artifactId>
     <groupId>com.able.ad</groupId>
+    <version>1.0-SNAPSHOT</version>
 
 
 </project>

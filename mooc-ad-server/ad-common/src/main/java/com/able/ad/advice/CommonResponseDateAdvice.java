@@ -12,19 +12,37 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 @RestControllerAdvice
 public class CommonResponseDateAdvice implements ResponseBodyAdvice<Object> {
+    /**
+     * 响应是否支持拦截
+     * @param methodParameter
+     * @param aClass
+     * @return
+     */
     @Override
     public boolean supports(MethodParameter methodParameter,
                             Class<? extends HttpMessageConverter<?>> aClass) {
-
+        //类是否被注解标识
         if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)) {
             return Boolean.TRUE;
         }
+        //方法是否被注解标识
         if (methodParameter.getMethod().isAnnotationPresent(IgnoreResponseAdvice.class)) {
             return Boolean.TRUE;
         }
+        //其他情况不予拦截处理
         return Boolean.FALSE;
     }
 
+    /**
+     * 在写入响应之前操作
+     * @param o 为响应对象
+     * @param methodParameter
+     * @param mediaType
+     * @param aClass
+     * @param serverHttpRequest
+     * @param serverHttpResponse
+     * @return
+     */
     @Nullable
     @Override
     public Object beforeBodyWrite(@Nullable Object o,
@@ -35,8 +53,11 @@ public class CommonResponseDateAdvice implements ResponseBodyAdvice<Object> {
                                   ServerHttpResponse serverHttpResponse) {
 
         CommonResponse<Object> response=new CommonResponse<>(0,"请求成功");
+
         if (o==null) {
             return response;
+        }else if(o instanceof CommonResponse){
+            return o;
         }
         response.setData(o);
         return response;

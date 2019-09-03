@@ -26,3 +26,9 @@ hs_err_pid*
 
 /.idea/
 /able-ad-spring-cloud.iml
+/mooc-ad-server/ad-common/ad-common.iml
+/ad-getway/target/
+/ad-getway/ad-gateway.iml
+/ad-getway/ad-getway.iml
+/ad-eureka/ad-eureka.iml
+/ad-eureka/target/
