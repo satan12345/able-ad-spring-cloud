@@ -31,4 +31,8 @@ hs_err_pid*
 /ad-getway/ad-gateway.iml
 /ad-getway/ad-getway.iml
 /ad-eureka/ad-eureka.iml
+/ad-eureka/target
 /ad-eureka/target/
+/mooc-ad-server/ad-common/target
+/mooc-ad-server/ad-sponsor/ad-sponsor.iml
+/mooc-ad-server/ad-sponsor/target

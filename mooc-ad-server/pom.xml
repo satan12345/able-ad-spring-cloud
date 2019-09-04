@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ad-common</module>
+        <module>ad-sponsor</module>
     </modules>
     <artifactId>mooc-ad-server</artifactId>
     <groupId>com.able.ad</groupId>

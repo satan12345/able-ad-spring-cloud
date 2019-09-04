@@ -14,7 +14,7 @@ public class GlobalExceptionAdvice {
                                                      AdException ex) {
         CommonResponse<String> response = new CommonResponse<>(-1,
                  "business error");
-        response.setData(ex.getMessage());
+        response.setMessage(ex.getMessage());
         return response;
     }
 }
