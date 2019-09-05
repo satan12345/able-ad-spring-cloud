@@ -1,4 +1,7 @@
 package com.able.ad.mapper;
 
-public interface AdPlanMapper {
+import com.able.ad.entry.AdPlan;
+import tk.mybatis.mapper.common.BaseMapper;
+
+public interface AdPlanMapper extends BaseMapper<AdPlan> {
 }
