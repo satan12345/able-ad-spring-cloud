@@ -1,4 +1,4 @@
-package com.able.ad.entry.unit_condition;
+package com.able.ad.entry;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
