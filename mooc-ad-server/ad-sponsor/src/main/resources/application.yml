@@ -28,3 +28,10 @@ eureka:
       defaultZone: http://server1:8000/eureka/
 
 
+
+
+mybatis:
+  type-aliases-package: com.able.ad.entry
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
