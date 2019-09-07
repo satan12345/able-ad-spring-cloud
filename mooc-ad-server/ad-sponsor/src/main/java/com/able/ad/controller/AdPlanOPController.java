@@ -1,5 +1,6 @@
 package com.able.ad.controller;
 
+import com.able.ad.annotation.UseResponseAdvice;
 import com.able.ad.entry.AdPlan;
 import com.able.ad.exception.AdException;
 import com.able.ad.service.AdPlanService;
@@ -43,6 +44,7 @@ public class AdPlanOPController {
     }
 
     @PostMapping("/get/adPlan")
+    @UseResponseAdvice
     public List<AdPlan> getAdPlanByIds(
             @RequestBody AdPlanGetRequest request) throws AdException {
         log.info("ad-sponsor: getAdPlanByIds -> {}",

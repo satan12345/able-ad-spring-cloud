@@ -1,6 +1,6 @@
 package com.able.ad.advice;
 
-import com.able.ad.annotation.IgnoreResponseAdvice;
+import com.able.ad.annotation.UseResponseAdvice;
 import com.able.ad.vo.CommonResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -22,11 +22,11 @@ public class CommonResponseDateAdvice implements ResponseBodyAdvice<Object> {
     public boolean supports(MethodParameter methodParameter,
                             Class<? extends HttpMessageConverter<?>> aClass) {
         //类是否被注解标识
-        if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)) {
+        if (methodParameter.getDeclaringClass().isAnnotationPresent(UseResponseAdvice.class)) {
             return Boolean.TRUE;
         }
         //方法是否被注解标识
-        if (methodParameter.getMethod().isAnnotationPresent(IgnoreResponseAdvice.class)) {
+        if (methodParameter.getMethod().isAnnotationPresent(UseResponseAdvice.class)) {
             return Boolean.TRUE;
         }
         //其他情况不予拦截处理
