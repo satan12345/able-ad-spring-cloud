@@ -65,12 +65,13 @@ public class AdUnitService {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
+        //判断广告计划是否存在
         Optional<AdPlan> adPlan =
                 planRepository.findById(request.getPlanId());
         if (!adPlan.isPresent()) {
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
-
+        //判断推广计划名称是否重复
         AdUnit oldAdUnit = unitRepository.findByPlanIdAndUnitName(
                 request.getPlanId(), request.getUnitName()
         );
@@ -87,6 +88,11 @@ public class AdUnitService {
                 newAdUnit.getUnitName());
     }
 
+    /***创建推广单元的关键词
+    * @author jipeng
+    * @date 2019/9/7 13:50
+    * @return com.able.ad.vo.AdUnitKeywordResponse
+    **/
 
     public AdUnitKeywordResponse createUnitKeyword(
             AdUnitKeywordRequest request) throws AdException {
@@ -114,7 +120,11 @@ public class AdUnitService {
         return new AdUnitKeywordResponse(ids);
     }
 
-
+    /***创建推广单元的兴趣点
+    * @author jipeng
+    * @date 2019/9/7 13:55
+    * @return com.able.ad.vo.AdUnitItResponse
+    **/
     public AdUnitItResponse createUnitIt(
             AdUnitItRequest request) throws AdException {
 
@@ -137,7 +147,11 @@ public class AdUnitService {
         return new AdUnitItResponse(ids);
     }
 
-
+    /***创建推广单元的位置限制
+    * @author jipeng
+    * @date 2019/9/7 13:57
+    * @return com.able.ad.vo.AdUnitDistrictResponse
+    **/
     public AdUnitDistrictResponse createUnitDistrict(
             AdUnitDistrictRequest request) throws AdException {
 
