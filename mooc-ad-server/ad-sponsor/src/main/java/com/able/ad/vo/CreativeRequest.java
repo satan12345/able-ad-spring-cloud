@@ -1,7 +1,8 @@
 package com.able.ad.vo;
 
-import com.imooc.ad.constant.CommonStatus;
-import com.imooc.ad.entity.Creative;
+
+import com.able.ad.constant.CommonStatus;
+import com.able.ad.entry.Creative;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
