@@ -26,19 +26,24 @@ import java.util.Optional;
  */
 @Service
 @Slf4j
-public class AdPlanServiceImpl{
+public class AdPlanService {
 
     private final AdUserRepository userRepository;
     private final AdPlanRepository planRepository;
 
     @Autowired
-    public AdPlanServiceImpl(AdUserRepository userRepository,
-                             AdPlanRepository planRepository) {
+    public AdPlanService(AdUserRepository userRepository,
+                         AdPlanRepository planRepository) {
         this.userRepository = userRepository;
         this.planRepository = planRepository;
     }
 
-
+    /**
+     * 创建推广计划
+     * @param request
+     * @return
+     * @throws AdException
+     */
     @Transactional
     public AdPlanResponse createAdPlan(AdPlanRequest request)
             throws AdException {
@@ -53,7 +58,7 @@ public class AdPlanServiceImpl{
         if (!adUser.isPresent()) {
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
-
+        //判断用户推广计划是否重名
         AdPlan oldPlan = planRepository.findByUserIdAndPlanName(
                 request.getUserId(), request.getPlanName()
         );
@@ -72,7 +77,12 @@ public class AdPlanServiceImpl{
                 newAdPlan.getPlanName());
     }
 
-
+    /**
+     * 获取推广计划
+     * @param request
+     * @return
+     * @throws AdException
+     */
     public List<AdPlan> getAdPlanByIds(AdPlanGetRequest request)
             throws AdException {
 
@@ -85,7 +95,12 @@ public class AdPlanServiceImpl{
         );
     }
 
-
+    /**
+     * 更新推广计划
+     * @param request
+     * @return
+     * @throws AdException
+     */
     @Transactional
     public AdPlanResponse updateAdPlan(AdPlanRequest request)
             throws AdException {
@@ -121,7 +136,11 @@ public class AdPlanServiceImpl{
         return new AdPlanResponse(plan.getId(), plan.getPlanName());
     }
 
-
+    /***删除推广计划
+    * @author jipeng
+    * @date 2019/9/7 11:01
+    * @return void
+    **/
     @Transactional
     public void deleteAdPlan(AdPlanRequest request) throws AdException {
 
