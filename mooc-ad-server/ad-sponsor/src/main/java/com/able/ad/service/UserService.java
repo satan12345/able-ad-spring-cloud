@@ -23,7 +23,7 @@ public class UserService {
     AdUserMapper adUserMapper;
 
     @Transactional
-    CreateUserResponse createUser(CreateUserRequest createUserRequest)
+    public CreateUserResponse createUser(CreateUserRequest createUserRequest)
             throws AdException{
         if (createUserRequest.validate()) {
                 throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);

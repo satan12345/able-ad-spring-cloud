@@ -177,15 +177,16 @@ public class AdUnitService {
 
     public CreativeUnitResponse createCreativeUnit(
             CreativeUnitRequest request) throws AdException {
-
+        //推广单元ids
         List<Long> unitIds = request.getUnitItems().stream()
                 .map(CreativeUnitRequest.CreativeUnitItem::getUnitId)
                 .collect(Collectors.toList());
+        //创意ids
         List<Long> creativeIds = request.getUnitItems().stream()
                 .map(CreativeUnitRequest.CreativeUnitItem::getCreativeId)
                 .collect(Collectors.toList());
 
-        if (!(isRelatedUnitExist(unitIds) && isRelatedUnitExist(creativeIds))) {
+        if (!(isRelatedUnitExist(unitIds) && isRelatedCreativeExist(creativeIds))) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
