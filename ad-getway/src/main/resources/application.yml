@@ -9,11 +9,14 @@ eureka:
       defaultZone: http://server1:8000/eureka/
 
 zuul:
-  prefix: /imooc
+#  统一前缀
+  prefix: /able
   routes:
+#    路由的微服务
     sponsor:
       path: /ad-sponsor/**
       serviceId: eureka-client-ad-sponsor
+      #是否删除前缀
       strip-prefix: false
     search:
       path: /ad-search/**
